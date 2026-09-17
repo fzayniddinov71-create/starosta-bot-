@@ -3,7 +3,7 @@ name: Telegram Bot Daily Notifier
 on:
   schedule:
     # 21:50 Toshkent vaqti (UTC+5) = 16:50 UTC
-    - cron: "56 16 * * *"
+    - cron: "4 17 * * *"
   workflow_dispatch: {}
 
 jobs:
