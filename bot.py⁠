@@ -1,0 +1,33 @@
+name: Telegram Bot Daily Notifier
+
+on:
+  schedule:
+    Hozircha 20:00 ga test qilish uchun (UTC 15:00 = Toshkent vaqti 20:00)
+    - cron: '0 15 * * *'
+    # Keyinchalik 07:30 va 07:50 ga qaytarish uchun pastdagilarni yoqasan:
+    # - cron: '30 2 * * *'
+    # - cron: '50 2 * * *'
+  workflow_dispatch: # <--- Istalgan payt qo'lda "Run workflow" bosib tekshirish uchun tugma
+
+jobs:
+  send-message:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          pip install requests
+
+      - name: Send Message
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          CHAT_ID: ${{ secrets.CHAT_ID }}
+        run: |
+          python bot.py morning
