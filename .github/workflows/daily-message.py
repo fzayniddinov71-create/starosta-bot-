@@ -2,7 +2,7 @@ name: Telegram Bot Daily Notifier
 
 on:
   schedule:
-    - cron: '29 16 * * *'
+    - cron: '40 16 * * *'
   workflow_dispatch:
 
 jobs:
