@@ -2,7 +2,7 @@ name: Telegram Bot Daily Notifier
 
 on:
   schedule:
-    - cron: '42 15 * * *'
+    - cron: '5 4 * * *'
   workflow_dispatch:
 
 jobs:
@@ -21,9 +21,6 @@ jobs:
         run: |
           pip install requests
 
-      - name: Send Message
-        env:
-          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
-          CHAT_ID: ${{ secrets.CHAT_ID }}
+      - name: Run bot script
         run: |
-          python bot.py morning
+          python bot.py
